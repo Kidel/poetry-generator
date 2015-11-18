@@ -84,7 +84,7 @@ function generatePretty(key){
         }
         if (isTitle){
             var mydate = new Date();
-            newPoem += "<h1>" + lines[line] + "</h1>\n<h2>by A Computer, "+mydate.toDateString()+"</h2>\n";
+            newPoem += "<h2>" + lines[line] + "</h2>\n<h3>by A Computer, "+mydate.toDateString()+"</h3>\n";
             isTitle = false;
         }
         else {

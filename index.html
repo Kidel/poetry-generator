@@ -1,15 +1,16 @@
 <html>
 <head>
-<script src="js/vendor/jquery.min.js"></script>
+<title>Poetry Generator (JS version)</title>
 <script src="dictionary.js"></script>
 <script src="poem.js"></script>
 </head>
 <body id="body">
+GitHub fork: <a href="https://github.com/Kidel/poetry-generator">https://github.com/Kidel/poetry-generator</a>
 <script>
     var karr = getKeys();
 
     for(var key in karr) {
-        document.getElementById("body").innerHTML += generatePretty(karr[key]);
+        document.getElementById("body").innerHTML += "<h1>" + karr[key].replace("<","&lt;").replace(">","&gt;") + "</h1>\n" + generatePretty(karr[key]);
     }
 </script>
 
