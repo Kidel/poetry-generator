@@ -1,0 +1,17 @@
+<html>
+<head>
+<script src="js/vendor/jquery.min.js"></script>
+<script src="dictionary.js"></script>
+<script src="poem.js"></script>
+</head>
+<body id="body">
+<script>
+    var karr = getKeys();
+
+    for(var key in karr) {
+        document.getElementById("body").innerHTML += generatePretty(karr[key]);
+    }
+</script>
+
+</body>
+</html>
