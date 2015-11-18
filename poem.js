@@ -72,12 +72,14 @@ function generatePretty(key){
     lines.push('\n');
     for( var line in lines) {
         lines[line] = lines[line].trim();
-        lines[line] = lines[line].replace(' ,',',');
-        lines[line] = lines[line].replace(' ?','?');
-        lines[line] = lines[line].replace(' !','!');
-        lines[line] = lines[line].replace(' \.','.');
-        lines[line] = lines[line].replace(' :',':');
-        lines[line] = lines[line].replace(' \'','\'');
+        lines[line] = lines[line].replace(/  /gi,' ');
+        lines[line] = lines[line].replace(/ \,/gi,',');
+        lines[line] = lines[line].replace(/ \?/gi,'?');
+        lines[line] = lines[line].replace(/ \?/gi,'?');
+        lines[line] = lines[line].replace(/ \!/gi,'!');
+        lines[line] = lines[line].replace(/ \./gi,'.');
+        lines[line] = lines[line].replace(/ \:/gi,':');
+        lines[line] = lines[line].replace(/ \'/gi,'\'');
         if (capitalize) {
             lines[line] = capitalizeFirstLetter(lines[line]);
             capitalize = false;
@@ -168,10 +170,19 @@ function generatePretty(key){
             }
         }
     }
-    newPoem = newPoem.replace('\.\.','.');
-    newPoem = newPoem.replace('?\.','!');
-    newPoem = newPoem.replace('!\.','?');
-    newPoem = globalReplace(' i ',' I ', newPoem);
+    newPoem = newPoem.replace(/[\.,\:\-]\./gi,'.');
+    newPoem = newPoem.replace(/\.\./gi,'...');
+    newPoem = newPoem.replace(/\.[\.,\:\-]/gi,'.');
+    newPoem = newPoem.replace(/\?\./gi,'?');
+    newPoem = newPoem.replace(/!\./gi,'!');
+    newPoem = newPoem.replace(/\.\?/gi,'?');
+    newPoem = newPoem.replace(/\.\!/gi,'!');
+    newPoem = newPoem.replace(/\![,\:\-\!]/gi,'!');
+    newPoem = newPoem.replace(/[\,\:\-\!]\!/gi,'?');
+    newPoem = newPoem.replace(/\?[,\:\-\!]/gi,'?');
+    newPoem = newPoem.replace(/[,\:\-\!]\?/gi,'?');
+    newPoem = newPoem.replace(/ i /gi,' I ');
+    newPoem = newPoem.replace(/^i /gi,'I ');
     return newPoem;
 }
 
